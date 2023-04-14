@@ -10,4 +10,4 @@ Currently, three algorithms are implemented in AutoHPO:
 
 - Grid Search (GS)
 - Random Search (RS)
-- Particle Swarm Optimization (PSO)
+- Particle Swarm Optimization (PSO) --> to be added
