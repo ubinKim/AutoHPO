@@ -138,7 +138,7 @@ if __name__ == "__main__":
     random_results_file.write(header)
 
     # Number of epochs to train
-    no_of_epoch = 1
+    no_of_epoch = 50
 
     # Define a loss function
     loss_fn = nn.CrossEntropyLoss()
