@@ -1,0 +1,75 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns; sns.set()
+
+#plt.rcParams['figure.figzise'] = [20,20]
+
+f = pd.read_csv('random_results_80.csv')
+df = pd.DataFrame(f)
+
+plt.subplot(231)
+plt.scatter(df['lr'], df['tr_acc'], marker='+')
+plt.title('tr_accuracy over learning_rate')
+plt.xlabel('lr')
+plt.ylabel('tr_acc')
+
+
+plt.subplot(232)
+plt.scatter(df['dropout'], df['tr_acc'], marker='+')
+plt.title('tr_accuracy over dropout')
+plt.xlabel('dropout')
+plt.ylabel('tr_acc')
+
+
+plt.subplot(233)
+plt.scatter(df['hidden_layer'], df['tr_acc'], marker='+')
+plt.title('tr_accuracy over hidden_layer')
+plt.xlabel('hidden_layer')
+plt.ylabel('tr_acc')
+
+plt.subplot(234)
+plt.scatter(df['lr'], df['val_acc'], marker='+')
+plt.title('val_accuracy over learning_rate')
+plt.xlabel('lr')
+plt.ylabel('val_acc')
+
+
+plt.subplot(235)
+plt.scatter(df['dropout'], df['val_acc'], marker='+')
+plt.title('val_accuracy over dropout')
+plt.xlabel('dropout')
+plt.ylabel('val_acc')
+
+
+plt.subplot(236)
+plt.scatter(df['hidden_layer'], df['val_acc'], marker='+')
+plt.title('val_accuracy over hidden_layer')
+plt.xlabel('hidden_layer')
+plt.ylabel('val_acc')
+
+plt.show()
+
+'''
+Histogram
+f = pd.read_csv('random_results_25.csv')
+data_frame = pd.DataFrame(f)
+#print(data_frame)
+
+#print(pd.value_counts(f['val_acc']))
+#plt.subplot(221)
+fig = plt.figure()
+axes1=fig.add_subplot(1,2,1)
+axes1.hist(f['tr_acc'], bins = 10)
+axes1.set_xlabel('Accuracy')
+axes1.set_ylabel('count')
+axes1.set_title('Training')
+
+axes2=fig.add_subplot(1,2,2)
+axes2.hist(f['val_acc'], bins = 10)
+axes2.set_title("Validation")
+axes2.set_xlabel('Accuracy')
+plt.show()
+
+'''
+
