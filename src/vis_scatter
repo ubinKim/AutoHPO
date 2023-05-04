@@ -1,3 +1,9 @@
+"""
+Scatter plot for result visualization
+x: hyperparameter (learning_rate/p_dropout/hidden_layer)
+y: accuracy (train/valid)
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
