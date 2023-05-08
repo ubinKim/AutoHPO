@@ -8,16 +8,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
 
-result_file = pd.read_csv('../results/random_results_80.csv')
+result_file = pd.read_csv('../results/random_results.csv')
 df = pd.DataFrame(result_file)
 
-hyperparameters = ['lr', 'dropout', 'hidden_layer']
+hyperparams = ['lr', 'dropout', 'hidden_layer']
 accuracy = ['tr_acc', 'val_acc']
 
-fig, axs = plt.subplots(len(accuracy), len(hyperparameters), figsize=(12, 8))
+fig, axs = plt.subplots(len(accuracy), len(hyperparams), figsize=(12, 8))
 
 for i, acc in enumerate(accuracy):
-    for j, hp in enumerate(hyperparameters):
+    for j, hp in enumerate(hyperparams):
         axs[i, j].scatter(df[hp], df[acc], marker='+')
         axs[i, j].set_title(f"{acc} over {hp}")
         axs[i, j].set_xlabel(hp)
