@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import itertools
 
-result_file = pd.read_csv('../results/grid_results.csv')
+result_file = pd.read_csv('../results/grid_results_2.csv')
 df = pd.DataFrame(result_file)
 
 hyperparams = ['lr', 'dropout', 'hidden_layer']
@@ -24,7 +24,7 @@ for i, acc in enumerate(accuracy):
         highest_val_acc = result_file.groupby(list(hp))[acc].max().reset_index()
         pivot_drop = highest_val_acc.pivot(index=hp[0], columns=hp[1], values=acc)
         pivot_drop = pivot_drop.iloc[::-1]  # Reverse the order of rows
-        sns.heatmap(pivot_drop, linewidths=.2, annot=True, fmt='.4f', ax=axs[i, j]) # Display up to 4 decimal places
+        sns.heatmap(pivot_drop, linewidths=.2, annot=True, fmt='.4f', ax=axs[i, j], cmap='plasma') # Display up to 4 decimal places
         axs[i, j].set_title(f"{acc}: {hp[0]} & {hp[1]}")
         axs[i, j].set_xlabel(hp[1])
         axs[i, j].set_ylabel(hp[0])
