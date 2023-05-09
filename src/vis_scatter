@@ -23,4 +23,5 @@ for i, acc in enumerate(accuracy):
         axs[i, j].set_xlabel(hp)
         axs[i, j].set_ylabel(acc)
 
+plt.subplots_adjust(hspace=0.3)
 plt.show()
