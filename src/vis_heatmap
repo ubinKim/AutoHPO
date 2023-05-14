@@ -1,6 +1,6 @@
 """
 Heatmap for result visualization
-x, y: combination of hyperparameters (learning_rate/p_dropout/hidden_layer)
+x, y: combination of hyperparameters (lr/dropout/hidden_unit)
 cell value: accuracy (train/valid)
 """
 
@@ -9,23 +9,24 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import itertools
 
-result_file = pd.read_csv('../results/grid_results_2.csv')
+result_file = pd.read_csv('../results/grid_results_80.csv')
 df = pd.DataFrame(result_file)
 
-hyperparams = ['lr', 'dropout', 'hidden_layer']
+hyperparams = ['lr', 'dropout', 'hidden_unit']
 accuracy = ['tr_acc', 'val_acc']
 
 fig, axs = plt.subplots(len(accuracy), len(hyperparams), figsize=(12, 8))
-hp_combi = list(itertools.combinations(hyperparams, 2))
+hp_pairs = list(itertools.combinations(hyperparams, 2)) # all possible pair of hyperparameters
 
 for i, acc in enumerate(accuracy):
-    for j, hp in enumerate(hp_combi):
-        # Preprocessing to create pivot tables without duplicates
+    for j, hp in enumerate(hp_pairs):
+        # Preprocessing: create pivot tables without duplicates
         highest_val_acc = result_file.groupby(list(hp))[acc].max().reset_index()
-        pivot_drop = highest_val_acc.pivot(index=hp[0], columns=hp[1], values=acc)
-        pivot_drop = pivot_drop.iloc[::-1]  # Reverse the order of rows
-        sns.heatmap(pivot_drop, linewidths=.2, annot=True, fmt='.4f', ax=axs[i, j], cmap='plasma') # Display up to 4 decimal places
-        axs[i, j].set_title(f"{acc}: {hp[0]} & {hp[1]}")
+        pivot_table = highest_val_acc.pivot(index=hp[0], columns=hp[1], values=acc)
+        pivot_table = pivot_table.iloc[::-1]  # Reverse the order of rows
+        sns.heatmap(pivot_table, linewidths=.2, annot=True, fmt='.4f', ax=axs[i, j],
+                    cmap='plasma')  # Display up to 4 decimal places
+        axs[i, j].set_title(f"{acc}")
         axs[i, j].set_xlabel(hp[1])
         axs[i, j].set_ylabel(hp[0])
 
