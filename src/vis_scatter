@@ -1,7 +1,7 @@
 """
 Scatter plot for result visualization
 x: hyperparameter (lr/dropout/hidden_unit)
-y: accuracy (train/valid)
+y: accuracy (train/valid) 
 """
 
 import pandas as pd
