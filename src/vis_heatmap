@@ -1,7 +1,23 @@
 """
-Heatmap for result visualization
-x, y: combination of hyperparameters (lr/dropout/hidden_unit)
-cell value: accuracy (train/valid)
+Create a set of heatmaps with a 2 x 3 grid layout.
+Each heatmap displays the training and validation accuracy for a pair of hyperparameters.
+
+The data used to generate the heatmaps is loaded from CSV file.
+
+Returns:
+-------
+a 2D array of matplotlib.axes._subplots.AxesSubplot
+    The heatmap displaying the training and validation accuracy for a pair of hyperparameters
+
+    x-axis, y-axis: a pair of hyperparameters (lr/dropout/hidden_unit) \n
+    cell value: corresponding accuracy (1st row: training / 2nd row: validation) \n
+
+Usage:
+-------
+The resulting set of heatmaps can be used to: \n
+- Identify the hyperparameter pairs that lead to the highest accuracy on the training and validation sets.
+- Compare the performance of different hyperparameter combinations.
+
 """
 
 import pandas as pd
