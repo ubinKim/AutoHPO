@@ -73,7 +73,7 @@ for i, hp in enumerate(hp_pairs_names):
     }
 
     for k in range(3):
-        axs[k, i].set_xscale('log', base=x_interval)    # log transformations must done before set(**options)
+        axs[k, i].set_xscale('log', base=x_interval)    # log transformations must be done before set(**options)
         axs[k, i].set_yscale('log', base=y_interval)
         axs[k, i].set_title(algorithms[k])
         axs[k, i].set(**options)
