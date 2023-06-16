@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from tensorboardX import SummaryWriter
 
 class TISv1(nn.Module):
     def __init__(self, dropout, hidden_unit):
@@ -40,3 +41,16 @@ if __name__ == "__main__":
     model = TISv1(dropout=0.5, hidden_unit=32)
     out = model(test_input)
     print(out.shape)
+
+    """
+    To visualize the CNN architecture using Tensorboard: 
+    1. Run Python script
+    2. Open the terminal/command prompt
+    3. Move to the directory where your script is located
+    4. Launch TensorBoard by running this command in the terminal/command prompt:
+    tensorboard --logdir=runs
+    5. Access the TensorBoard interface in your web browser by visiting http://localhost:6006.
+    """
+
+    writer = SummaryWriter()
+    writer.add_graph(model, test_input)
