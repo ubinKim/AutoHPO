@@ -17,7 +17,7 @@ obj_args = {
 }
 
 non_optimized_args = {
-    'num_models': 3,    # Number of non-optimized NN models (to calculate the average)
+    'num_models': 10,    # Number of non-optimized NN models (to calculate the average)
     'result_path': '../results/non_optimized.csv',
     'obj_args': obj_args,
 }
